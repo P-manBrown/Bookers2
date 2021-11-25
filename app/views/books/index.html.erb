@@ -1,25 +1,29 @@
 <main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
-
   <div class="row">
     <div class="col-md-3">
-      <h2>User info</h2>
-      <img class="attachment user profile_image fallback" src="/assets/no_image-72379a4da21cb04a58337cf92d85bc39f8d534cbc78254c2085acaca82236bfa.jpg"><table class="table">
+
+<!--User Info-->
+<h2>User info</h2>
+<%= attachment_image_tag @user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image2.jpeg" %>
+<!--<img class="attachment user profile_image fallback" src="/assets/no_image-72379a4da21cb04a58337cf92d85bc39f8d534cbc78254c2085acaca82236bfa.jpg">-->
+<table class="table">
   <tbody><tr></tr>
   <tr>
 	  <th>name</th>
-	  <th>test2 name</th>
+	  <th>test1 name</th>
   </tr>
   <tr>
 	  <th>introduction</th>
 	  <th></th>
   </tr>
 </tbody></table>
+  <div class="row">
+   <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
+   <!--<a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>-->
+  </div>
 
-<div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40442" href="/users/40442/edit"></a>
-</div>
 
 <!--投稿フォーム-->
 <h2 class="mt-3">New book</h2>
@@ -39,12 +43,13 @@
     <!--<input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">-->
   </div>
 <% end %>
-
 </form>
-    </div>
-    <div class="col-md-8 offset-md-1">
-      <h2>Books</h2>
-      <table class="table table-hover table-inverse">
+</div>
+
+<!--投稿一覧-->
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+　<table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th></th>
@@ -54,76 +59,26 @@
     </tr>
   </thead>
   <tbody>
+    <% @books.each do |book| %>
       <tr>
-        <td><a href="/users/40433">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31919" href="/books/31919">リーダブルコード</a></td>
-        <td>より良いコードを書くためのシンプルで実践的なテクニック。</td>
+        <td>
+          <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpeg" %>
+          <!--<a href="/users/40433">-->
+          <!--  <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">-->
+          <!--  </a>        -->
+        </td>
+        <td>
+          <%= link_to(book_path(book.id)) do %>
+            <%= book.title %>
+          <% end %>
+          <!--<a class="book_31919" href="/books/31919">リーダブルコード</a>-->
+        </td>
+        <td>
+          <%= book.body %>
+        </td>
       </tr>
-      <tr>
-        <td><a href="/users/40434">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31920" href="/books/31920">トラブル知らずのシステム設計</a></td>
-        <td>システム設計の要点を図解で説明してくれます。</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40435">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31921" href="/books/31921">たのしいRuby</a></td>
-        <td>Rubyの入門におすすめです。</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40439">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31922" href="/books/31922">a</a></td>
-        <td>懐かしい</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40440">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31923" href="/books/31923">eee</a></td>
-        <td>eee</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40438">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31924" href="/books/31924">テスト</a></td>
-        <td>test</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40441">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31926" href="/books/31926">とんとtの</a></td>
-        <td>とんとんとんきい</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40443">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31927" href="/books/31927">ll</a></td>
-        <td>lllpp</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40446">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31928" href="/books/31928">rails</a></td>
-        <td>zz</td>
-      </tr>
-      <tr>
-        <td><a href="/users/40444">
-          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
-</a>        </td>
-        <td><a class="book_31929" href="/books/31929">リーダブルコード</a></td>
-        <td>test</td>
-      </tr>
+    <% end %>
+
   </tbody>
 </table>
     </div>
