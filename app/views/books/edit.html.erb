@@ -2,16 +2,16 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		
+
 <h1>Editing Book</h1>
  <%= form_with model: @book, local:true do |f| %>
   <div class="form-group">
-    <label for="book_title">Title</label>
+    <%= f.label :title %>
     <%= f.text_field :title %>
     <!--<input class="form-control book_title" type="text" name="book[title]" id="book_title">-->
   </div>
   <div class="form-group">
-    <label for="book_opinion">Opinion</label>
+    <%= f.label :body, "Opinion" %>
     <%= f.text_area :body %>
     <!--<textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>-->
   </div>
@@ -40,8 +40,7 @@
   </div>
 </div>
 </div>
-      
-      
-      
-      
-   
+
+
+
+
