@@ -53,6 +53,10 @@
   		    <tr>
           <td>
             <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpeg" %>
+            <br>
+              <%= link_to(user_path(@user.id)) do %>
+              <%= @user.name %>
+              <% end %>
             <!--<a href="/users/40755">-->
             <!--<img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg"><br>-->
             <!--test1 name</a>      -->

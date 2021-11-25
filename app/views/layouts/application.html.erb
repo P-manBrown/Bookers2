@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <h2>Bookers</h2>
+  <header>
+    <h2><%= link_to "Bookers", root_path %> </h2>
     <% if user_signed_in? %>
       <li>
         <%= link_to "HOME", root_path %>
@@ -29,7 +30,7 @@
       <%= link_to "HOME", root_path %>
       </li>
       <li>
-      <%= link_to "About", destroy_user_session_path, method: :delete %>
+      <%= link_to "About", about_path %>
       </li>
       <li>
       <%= link_to "Sign up", new_user_registration_path %>
@@ -39,6 +40,18 @@
       </li>
    
     <% end %>
+  </header>
+
     <%= yield %>
+    
+<footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>
   </body>
 </html>
