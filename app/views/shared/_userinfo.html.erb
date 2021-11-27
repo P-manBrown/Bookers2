@@ -14,14 +14,14 @@
   </tr>
  </tbody>
 </table>
-  <% if @user.id == current_user.id %>
-    <div class="row">
-     <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
-     <!--<a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>-->
-    </div>
-  <% else %>
-     <div class="row">
-     <p><%= link_to "プロフィール編集", user_path(current_user) %></p>
-     <!--<a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>-->
-    </div>
-  <% end %>
+
+<div class="row">
+ <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+ <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>
+</div>
+
+
+
+
+
+

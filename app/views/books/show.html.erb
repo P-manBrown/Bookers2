@@ -1,10 +1,10 @@
-<p id="notice">You have created book successfully.</p>
+<p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      
+
 <!--UserInfo-->
-      <%= render 'shared/userinfo', user: @user %>
+<%= render 'shared/userinfo', user: @user %>
 
 <!--投稿フォーム-->
 <%= render '/shared/newbook', book: @book_new %>
@@ -16,7 +16,9 @@
   		  <tbody>
   		    <tr>
           <td>
+            <%= link_to(user_path(@user.id)) do %>
             <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpeg" %>
+            <% end %>
             <br>
               <%= link_to(user_path(@user.id)) do %>
               <%= @user.name %>
@@ -33,6 +35,7 @@
           <td>
             <%= @book_find.body %>
           </td>
+          <% if @user.id == current_user.id %>
           <td>
             <%= link_to "Edit", edit_book_path(@book_find.id) %>
             <!--<a class="btn btn-sm btn-success edit_book_32199" href="/books/32199/edit">Edit</a>-->
@@ -41,6 +44,7 @@
             <%= link_to "Destroy", book_path(@book_find.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
             <!--<a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_32199" rel="nofollow" data-method="delete" href="/books/32199">Destroy</a>-->
           </td>
+        <% end %>
         </tr>
       </tbody>
     </table>
