@@ -1,43 +1,41 @@
-<main>
-<p id="notice"></p>
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-      
-<!--UserInfo-->
+
+      <!--UserInfo-->
       <%= render 'shared/userinfo', user: @user %>
 
-<!--投稿フォーム-->
-     <%= render '/shared/newbook', book: @book %>
+      <!--投稿フォーム-->
+      <%= render '/shared/newbook', book: @book %>
 
-<!--User一覧-->
-    <div class="col-md-8 offset-md-1">
-      <h2>Users</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>image</th>
-            <th>name</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
+      <!--User一覧-->
+      <div class="col-md-8 offset-md-1">
+        <h2>Users</h2>
+        <table class="table">
+          <thead>
             <tr>
-              <td>
-                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpeg" %>
-              </td>
-              <td>
-                <%= user.name %>
-              </td>
-              <td>
-                <%= link_to "Show", user_path(user.id) %>
-                <!--<a class="user_40678" href="/users/40678">Show</a>-->
-              </td>
+              <th>image</th>
+              <th>name</th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image2.jpeg" %>
+                  </td>
+                  <td>
+                    <%= user.name %>
+                  </td>
+                  <td>
+                    <%= link_to "Show", user_path(user.id) %>
+                  </td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+        <%= paginate @users %>
+      </div>
     </div>
   </div>
 </div>

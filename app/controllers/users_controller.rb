@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 
   def index
     @book = Book.new
-    @users = User.all
+    @users = User.page(params[:page])
+    # @users = User.all
     @user = User.find(current_user.id)
   end
   

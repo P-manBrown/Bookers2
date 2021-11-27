@@ -1,5 +1,5 @@
-<div class="Notification">
-<% flash.each do |key, value| %>
-<%= content_tag :div, value, class: key %>
-<% end %>
-</div>
+<p class="text-success">
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: key %>
+  <% end %>
+</p>

@@ -1,27 +1,22 @@
-<!--User Info-->
-<h2>User info</h2>
-<%= attachment_image_tag user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image2.jpeg" %>
-<!--<img class="attachment user profile_image fallback" src="/assets/no_image-72379a4da21cb04a58337cf92d85bc39f8d534cbc78254c2085acaca82236bfa.jpg">-->
-<table class="table">
-  <tbody>
-  <tr>
-	  <th>name</th>
-	  <th><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= user.introduction %></th>
-  </tr>
- </tbody>
-</table>
-
-<div class="row">
- <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
- <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>
-</div>
-
-
-
-
-
+<div class="col-md-3">
+  <h2>User info</h2>
+  <%= attachment_image_tag user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image2.jpeg" %>
+  <table class="table">
+    <tbody>
+      <tr>
+  	    <th>name</th>
+  	    <th><%= user.name %></th>
+      </tr>
+      <tr>
+  	    <th>introduction</th>
+  	    <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="row">
+    <%= link_to (edit_user_path(user)), class: "btn btn-outline-secondary btn-block" do %>
+    <i class ="fas fa-user-cog"></i>
+    <% end %>
+  </div>
 
