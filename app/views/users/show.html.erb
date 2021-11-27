@@ -5,50 +5,12 @@
     <div class="col-md-3">
 
 <!--User Info-->
-<h2>User info</h2>
-<%= attachment_image_tag @user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image2.jpeg" %>
-<!--<img class="attachment user profile_image fallback" src="/assets/no_image-72379a4da21cb04a58337cf92d85bc39f8d534cbc78254c2085acaca82236bfa.jpg">-->
-<table class="table">
-  <tbody>
-    <tr>
-	    <th>name</th>
-	    <th><%= @user.name %></th>
-    </tr>
-    <tr>
-	    <th>introduction</th>
-	    <th><%= @user.introduction %></th>
-    </tr>
-  </tbody>
-</table>
-  <% if @user.id == current_user.id %>
-    <div class="row">
-     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-     <!--<a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_40507" href="/users/40507/edit"></a>-->
-    </div>
-  <% end %>
+  <%= render 'shared/userinfo', user: @user %>
 
+<!--投稿フォーム-->
+  <%= render 'shared/newbook', book: @book %>
 
- <!--投稿フォーム-->
-<h2 class="mt-3">New book</h2>
-  <%= form_with model: @book, url:books_path, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <!--<input class="form-control book_title" type="text" name="book[title]" id="book_title">-->
-  </div>
-  <div class="form-group">
-    <%= f.label :body, "Opinion" %>
-    <%= f.text_area :body %>
-    <!--<textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>-->
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Create Book' %>
-    <!--<input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">-->
-  </div>
-<% end %>
-</div>
-
-<!--User一覧-->
+<!--User投稿一覧-->
 <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
@@ -65,15 +27,15 @@
       <tr>
         <td>
           <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpeg" %>
-          <!--<a href="/users/40433">-->
-          <!--  <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">-->
-          <!--  </a>        -->
+          <a href="/users/40433">
+            <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg">
+            </a>        
         </td>
         <td>
           <%= link_to(book_path(book.id)) do %>
             <%= book.title %>
           <% end %>
-          <!--<a class="book_31919" href="/books/31919">リーダブルコード</a>-->
+          <a class="book_31919" href="/books/31919">リーダブルコード</a>
         </td>
         <td>
           <%= book.body %>

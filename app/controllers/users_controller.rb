@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @book = Book.new
     @users = User.all
     @user = User.find(current_user.id)
   end
