@@ -3,6 +3,11 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>User info</h2>
+    
+    <!--エラーメッセージ-->
+    <%= render 'devise/shared/error_messages', resource: @user %>
+    
+    <!--編集フォーム-->
       <%= form_with model:@user, local:true do |f| %> 
     <!--<form enctype="multipart/form-data" action="/users/40554" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="97jpu5Hev+HjK52Xdz1wGmW0S4v7mmJNa3xR9jB/KKgrRaIXCeSlI9Xv4QfJVlyGdneV42HJQY1wPEeXIXqHTQ==">-->
       <div class="form-group">
@@ -29,3 +34,4 @@
 </div>
 </div>
 </div>
+
